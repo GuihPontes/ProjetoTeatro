@@ -15,6 +15,8 @@ int resposta;
 int selecionarpoltrona;
 int selecionarfileira;
 int selecionarlugar;
+int preco;
+
 
 void mapaSala(int** x) {
 	for (int C = 1; C < 15; C++)
@@ -38,13 +40,14 @@ void reserva_de_lugares(int** x)
 		if (x[selecionarfileira][selecionarlugar] == 0)
 		{
 			x[selecionarfileira][selecionarlugar] = 1;
-			cout << "assento reservado\n\n";
+			cout << "\n\nAssento reservado\n\n";
 			quantidadeVIP++;
+			preco += 50;
 		}
 
 		else 
 		{
-			cout << "assento indisponivel ";
+			cout << "\n\nAssento indisponivel\n\n ";
 		}
 	}
 	else {
@@ -52,11 +55,12 @@ void reserva_de_lugares(int** x)
 			if (x[selecionarlugar][selecionarfileira] == 0)
 			{
 				x[selecionarlugar][selecionarfileira] = 1;
-				cout << "assento reservado\n\n";
+				cout << "Assento reservado\n\n";
 				quantidadePremiun++;
+				preco += 30;
 			}
 			else {
-				cout << "assento indisponivel ";
+				cout << "\n\nAssento indisponivel\n\n ";
 
 			}
 		}
@@ -64,16 +68,17 @@ void reserva_de_lugares(int** x)
 			if (x[selecionarlugar][selecionarfileira] == 0)
 			{
 				x[selecionarlugar][selecionarfileira] = 1;
-				cout << "assento reservado\n\n";
+				cout << "\n\nAssento reservado\n\n";
 				quantidadeComun++;
+				preco += 15;
 			}
 			else {
-				cout << "assento indisponivel ";
+				cout << "\n\nAssento indisponivel\n\n";
 
 			}
 		}
 		else {
-			cout << "Escolha indisponivel ";
+			cout << "\n\nEscolha indisponivel\n\n";
 		}
 	}
 
@@ -123,8 +128,8 @@ int main(int argc, char** argv)
 
 	while (true) {
 
-		cout << "\n0 - Finalizar programa\n1- Reservar poltrona\n2- Mapa de ocupação\n3- Faturamento\n";
-		cout << "Selecione uma das opções: ";
+		cout << "\n0 - Finalizar programa\n1- Reservar poltrona\n2- Mapa de ocupacao\n3- Faturamento\n";
+		cout << "Selecione uma das opcoes: ";
 		cin >> resposta;
 
 		switch (resposta)
@@ -136,10 +141,13 @@ int main(int argc, char** argv)
 			reserva_de_lugares(mat);
 			break;
 		case 2:
+			cout << " M A P A - D A - S A L A\n\n";
 			mapaSala(mat);
 			break;
-		case3:
-			cout <<"", quantidadeVIP;
+		case 3:
+			cout << "\n\nO preco total da compra eh: ";
+			cout << preco; cout << " reais\n\n";
+
 			break;
 
 		}
